@@ -1,8 +1,18 @@
 import React from 'react';
+import {Button} from "react-bootstrap";
 
-function Header() {
+function Header({menuOpen, setMenuOpen}) {
     return <header className="header">
-        <h1>SASKOART</h1>
+        <Button
+            className="hamburgerButton"
+            onClick={() => setMenuOpen(prev => !prev)}
+            variant="light"
+        >
+            {menuOpen ? '✖' : '☰'}
+        </Button>
+        <div className="headerTitle">
+            <h1>SASKOART</h1>
+        </div>
     </header>
 }
 

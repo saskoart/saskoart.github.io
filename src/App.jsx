@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 
 function App() {
     const [structure, setStructure] = useState({});
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         loadStructure(setStructure);
@@ -16,9 +17,10 @@ function App() {
     return (
         <Router>
             <div className="layoutStyle">
-                <Header />
+                <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
                 <div className="mainArea">
-                    <div className="sidebarStyle">
+                    <div className={`sidebarStyle ${menuOpen ? "open" : ""}`}>
+
                         <Nav className="flex-column">
                             {"folders" in structure ? Object.keys(structure.folders).map(folder => (
                                 <Nav.Item key={folder}>
@@ -31,8 +33,9 @@ function App() {
                                         onMouseLeave={(e) =>
                                             (e.target.style.backgroundColor = "transparent")
                                         }
+                                        onClick={(e) => setMenuOpen(false)}
                                     >
-                                        {folder}
+                                        {structure.folders[folder].title}
                                     </Link>
                                 </Nav.Item>
                             )) : null}

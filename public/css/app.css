@@ -7,14 +7,21 @@
 }
 
 .sidebarStyle {
-    width: 20%;
-    min-width: 10em;
+    position: absolute;
+    transform: translateX(-100%);     /* off-screen */
+    transition: transform 0.3s ease;
     background-color: #6e88d2;
     color: white;
     padding: 2em;
     display: flex;
     flex-direction: column;
     box-shadow: .2em 0 .8em rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+/* sidebar when opened */
+.sidebarStyle.open {
+    transform: translateX(0);         /* slide in */
 }
 
 .sidebarTitle {
@@ -41,10 +48,17 @@
 }
 
 .header {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
     color: white;
     background-color: #1E3A8A;
     flex: 0 0 auto;
+    padding: 1em 2em 1em 2em;
+}
+
+.headerTitle {
+    flex: 1 1 auto;
+    text-align: center;
 }
 
 .mainArea {
@@ -52,6 +66,7 @@
     flex-direction: row;
     flex: 1 1 auto;   /* force it to take remaining space */
     min-height: 0;    /* IMPORTANT: allows children to shrink and scroll */
+    position: relative;
 }
 
 .footer {
@@ -74,4 +89,15 @@ figure {
 
 .figureModal {
     width: 100%;
+}
+
+/* Hamburger button */
+.hamburgerButton {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    color: #1E3A8A;
 }
