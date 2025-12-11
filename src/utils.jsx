@@ -18,17 +18,20 @@ export async function loadStructure(setStructure) {
         folderLines = folderLines.slice(1);
     }
 
-    let resultFolders = {};
+    let results = {};
     folderLines.forEach(folderLine => {
-        resultFolders[folderLine[0]] = {title: folderLine[1], description: folderLine[2]};
+        results[folderLine[0]] = {
+            title: folderLine[1],
+            description: folderLine[2],
+            folderPath: `/data/${folderLine[0]}`
+        };
     });
 
     /*
      *  load the tabs
      */
-    const resultTabs = {};
 
-    for (const folder of Object.keys(resultFolders)) {
+    for (const folder of Object.keys(results)) {
         const csvPath = `/data/${folder}/${folder}.csv`;
         const response = await fetch(csvPath);
         const text = await response.text();
@@ -50,16 +53,11 @@ export async function loadStructure(setStructure) {
             dataRows = rows.slice(1);
         }
 
-        const entries = dataRows.map(row => ({
+        results[folder].entries = dataRows.map(row => ({
             image: row[0],
             title: row[1],
             description: row[2]
         }));
-
-        resultTabs[folder] = {
-            folderPath: `/data/${folder}`,
-            entries
-        };
     }
-    setStructure({folders: resultFolders, tabs: resultTabs});
+    setStructure(results);
 }

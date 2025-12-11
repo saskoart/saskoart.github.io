@@ -11,8 +11,8 @@ function GalleryTab({ title, description, data, folder }) {
     };
 
     return (
-        <div style={{ marginTop: 30 }}>
-            <h3>{title}</h3>
+        <div className="contentStyle">
+            <h2>{title}</h2>
             {description != null || description === "" ? <p>{description}</p> : null}
 
             {data.map((item, index) => (

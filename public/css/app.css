@@ -79,7 +79,7 @@
 figure {
     padding: 1em 2em 1em 2em;
     margin: 0 !important;
-    width: 30em;
+    max-width: 30em;
 }
 
 .figureComponent {
