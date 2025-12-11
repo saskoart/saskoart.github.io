@@ -64,4 +64,14 @@
 figure {
     padding: 1em 2em 1em 2em;
     margin: 0 !important;
+    width: 30em;
+}
+
+.figureComponent {
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+.figureModal {
+    width: 100%;
 }
