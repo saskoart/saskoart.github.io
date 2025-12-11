@@ -61,6 +61,11 @@
     text-align: center;
 }
 
+.header a {
+    text-decoration: none;
+    color: inherit; /* optional: keep h1 color */
+}
+
 .mainArea {
     display: flex;
     flex-direction: row;

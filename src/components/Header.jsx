@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 function Header({menuOpen, setMenuOpen}) {
     return <header className="header">
@@ -11,7 +12,7 @@ function Header({menuOpen, setMenuOpen}) {
             {menuOpen ? '✖' : '☰'}
         </Button>
         <div className="headerTitle">
-            <h1>SASKOART</h1>
+            <Link to={"/"}><h1>SASKOART</h1></Link>
         </div>
     </header>
 }
