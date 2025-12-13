@@ -93,7 +93,36 @@ figure {
 }
 
 .figureModal {
-    width: 100%;
+    width: 80vw;
+    height: 80vh;
+}
+
+.figureModalImage {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;   /* Seitenverhältnis beibehalten */
+    background-color: white;
+}
+
+.modal-content {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 90vh;
+    width: 90vw !important;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body {
+    flex: 1 1 auto;      /* nimmt Resthöhe */
+    overflow: hidden;    /* wichtig */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Hamburger button */
@@ -105,4 +134,19 @@ figure {
     padding: 10px;
     cursor: pointer;
     color: #1E3A8A;
+}
+
+.figureCaptionTitle {
+    text-align: center;
+    font-size: 1.5em !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+.figureComponentImage {
+    width: 400px !important;
+    height: 300px !important;
+    object-fit: contain;   /* Seitenverhältnis beibehalten */
+    background-color: white;
+    display: block;
 }

@@ -24,16 +24,17 @@ function GalleryTab({ title, description, data, folder }) {
                     <FigureImage
                         src={`${folder}/images/${item.image}`}
                         alt={item.title}
+                        className="figureComponentImage"
                     />
                     <FigureCaption>
-                        <h3>{item.title}</h3>
+                        <h3 className="figureCaptionTitle">{item.title}</h3>
                         <p>{item.description}</p>
                     </FigureCaption>
                 </Figure>
             ))}
 
             {/* Modal for enlarged image */}
-            <Modal show={show} onHide={() => setShow(false)} centered size="lg">
+            <Modal show={show} onHide={() => setShow(false)} className="figureModal">
                 <Modal.Header closeButton>
                     {selectedImage ? selectedImage.title : ""}
                 </Modal.Header>
@@ -41,7 +42,7 @@ function GalleryTab({ title, description, data, folder }) {
                     {selectedImage ? <img
                             src={`${folder}/images/${selectedImage.image}`}
                             alt={selectedImage.title}
-                            className="figureModal"
+                            className="figureModalImage"
                         /> : null}
                 </Modal.Body>
             </Modal>

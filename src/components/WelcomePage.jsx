@@ -16,11 +16,12 @@ function WelcomePage({ structure }) {
                         Object.keys(structure).map(folder => <Link to={`/${folder}`} key={folder}>
                             <Figure>
                                 <FigureCaption>
-                                    {structure[folder].title}
+                                    <h3 className="figureCaptionTitle">{structure[folder].title}</h3>
                                 </FigureCaption>
                                 <FigureImage
                                     src={`data/${folder}/images/${structure[folder].entries[0].image}`}
                                     alt={structure[folder].entries[0].title}
+                                    className="figureComponentImage"
                                 />
                             </Figure>
                         </Link>)
