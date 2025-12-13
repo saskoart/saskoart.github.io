@@ -43,7 +43,7 @@
 
 .contentStyle {
     flex:1 1 auto;
-    padding: 0 4em 0 4em;
+    padding: 2em 4em 2em 4em;
     overflow-y: auto;
 }
 
@@ -106,9 +106,12 @@ figure {
 
 .modal-content {
     height: 90vh;
-    width: 90vw;
     display: flex;
     flex-direction: column;
+}
+
+.modal-dialog {
+    max-width: 90vw !important;
 }
 
 .modal-body {
