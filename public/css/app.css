@@ -92,11 +92,6 @@ figure {
     cursor: pointer;
 }
 
-.figureModal {
-    width: 80vw;
-    height: 80vh;
-}
-
 .figureModalImage {
     max-width: 100%;
     max-height: 100%;

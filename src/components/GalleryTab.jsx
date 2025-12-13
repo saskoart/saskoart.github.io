@@ -34,7 +34,7 @@ function GalleryTab({ title, description, data, folder }) {
             ))}
 
             {/* Modal for enlarged image */}
-            <Modal show={show} onHide={() => setShow(false)} className="figureModal">
+            <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
                     {selectedImage ? selectedImage.title : ""}
                 </Modal.Header>
