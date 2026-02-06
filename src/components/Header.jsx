@@ -12,7 +12,7 @@ function Header({menuOpen, setMenuOpen}) {
             {menuOpen ? '✖' : '☰'}
         </Button>
         <div className="headerTitle">
-            <Link to={"/"}><h1>SASKOART</h1></Link>
+            <Link to={"/"}><h1>SASKO ART</h1></Link>
         </div>
     </header>
 }
