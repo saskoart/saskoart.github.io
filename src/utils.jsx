@@ -32,7 +32,7 @@ export async function loadStructure(setStructure) {
      */
 
     for (const folder of Object.keys(results)) {
-        const csvPath = `/data/${folder}/${folder}.csv`;
+        const csvPath = `/data/${folder}/series.csv`;
         const response = await fetch(csvPath);
         const text = await response.text();
 
