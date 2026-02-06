@@ -75,10 +75,21 @@
 }
 
 .footer {
+    display: flex;
     text-align: center;
     color: white;
     background-color: #1E3A8A;
     flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer a {
+    color: white;
 }
 
 figure {
