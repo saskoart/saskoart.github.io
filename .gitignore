@@ -24,3 +24,7 @@ yarn-error.log*
 
 .idea
 package-lock.json
+
+/raw_images
+/processed_images
+process_files.py
