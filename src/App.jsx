@@ -66,6 +66,7 @@ function App() {
                                     <GalleryTab
                                         title={structure[folder].title}
                                         description={structure[folder].description}
+                                        description_english={structure[folder].description_english}
                                         data={structure[folder].entries}
                                         folder={structure[folder].folderPath}
                                     />

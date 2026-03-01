@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Figure, FigureCaption, FigureImage, Modal } from "react-bootstrap";
 
-function GalleryTab({ title, description, data, folder }) {
+function GalleryTab({ title, description, description_english, data, folder }) {
     const [show, setShow] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -14,6 +14,7 @@ function GalleryTab({ title, description, data, folder }) {
         <div className="contentStyle">
             <h2>{title}</h2>
             {description != null || description === "" ? <p>{description}</p> : null}
+            {description_english != null || description_english === "" ? <><br/><p>{description}</p></> : null}
 
             {data.map((item, index) => (
                 <Figure

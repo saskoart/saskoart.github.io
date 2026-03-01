@@ -23,6 +23,7 @@ export async function loadStructure(setStructure) {
         results[folderLine[0]] = {
             title: folderLine[1],
             description: folderLine[2],
+            description_english: folderLine[3],
             folderPath: `/data/${folderLine[0]}`
         };
     });
