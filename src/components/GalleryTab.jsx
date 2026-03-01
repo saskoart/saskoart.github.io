@@ -14,7 +14,7 @@ function GalleryTab({ title, description, description_english, data, folder }) {
         <div className="contentStyle">
             <h2>{title}</h2>
             {description != null || description === "" ? <p>{description}</p> : null}
-            {description_english != null || description_english === "" ? <><br/><p>{description}</p></> : null}
+            {description_english != null || description_english === "" ? <p>{description_english}</p> : null}
 
             {data.map((item, index) => (
                 <Figure
