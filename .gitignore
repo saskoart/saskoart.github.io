@@ -28,3 +28,6 @@ package-lock.json
 /raw_images
 /processed_images
 process_files.py
+/public/data/*/raw_images
+/raw_data
+process_files.py

@@ -1,3 +1,5 @@
+import Papa from "papaparse";
+
 export async function loadStructure(setStructure) {
 
     /*
@@ -6,11 +8,12 @@ export async function loadStructure(setStructure) {
     const foldersRes = await fetch("/data/folders.csv");
     const foldersText = await foldersRes.text();
 
-    let folderLines = foldersText
-        .split("\n")
-        .map(line => line.trim())
-        .filter(line => line.length > 0)
-        .map(r => r.split(";"));
+    let { data: folderLines } = Papa.parse(foldersText, {
+        delimiter: ",",      // since your CSV uses ;
+        skipEmptyLines: true,
+        quoteChar: '"',
+        escapeChar: '"'
+    });
 
     const first = folderLines[0][0].toLowerCase();
 
@@ -37,11 +40,14 @@ export async function loadStructure(setStructure) {
         const response = await fetch(csvPath);
         const text = await response.text();
 
-        const rows = text
-            .split("\n")
-            .map(r => r.trim())
-            .filter(r => r.length > 0)
-            .map(r => r.split(";"));
+        const { data: rows } = Papa.parse(text, {
+            delimiter: ",",      // since your CSV uses ;
+            skipEmptyLines: true,
+            quoteChar: '"',
+            escapeChar: '"'
+        });
+
+        console.log(csvPath);
 
         const firstRow = rows[0];
         let dataRows = rows;
