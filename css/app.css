@@ -153,3 +153,7 @@ figure {
     background-color: white;
     display: block;
 }
+
+.english-text {
+    font-style: italic;
+}
