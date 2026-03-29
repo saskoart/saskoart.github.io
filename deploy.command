@@ -2,6 +2,8 @@
 
 set -e
 
+git pull
+
 # Load conda
 source "$(conda info --base)/etc/profile.d/conda.sh"
 

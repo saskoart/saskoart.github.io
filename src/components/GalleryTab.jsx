@@ -13,9 +13,6 @@ function GalleryTab({ title, description, description_english, data, folder }) {
     return (
         <div className="contentStyle">
             <h2>{title}</h2>
-            {description != null || description === "" ? <p>{description}</p> : null}
-            {description_english != null || description_english === "" ? <p>{description_english}</p> : null}
-
             {data.map((item, index) => (
                 <Figure
                     key={index}
@@ -33,6 +30,20 @@ function GalleryTab({ title, description, description_english, data, folder }) {
                     </FigureCaption>
                 </Figure>
             ))}
+            {description != null && description !== ""
+                ? description.split("\n").map((line, index) => (
+                    <p key={index + "deutsch"}>
+                        {line}
+                    </p>
+                ))
+                : null}
+            {description_english != null && description_english !== ""
+                ? description_english.split("\n").map((line, index) => (
+                    <p className="english-text" key={index + "english"}>
+                        {line}
+                    </p>
+                ))
+                : null}
 
             {/* Modal for enlarged image */}
             <Modal show={show} onHide={() => setShow(false)}>
