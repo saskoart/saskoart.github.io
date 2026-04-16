@@ -16,8 +16,12 @@ echo "Running Python processing script..."
 python process_files.py
 
 git add -A
-git commit -m "update"
-git push
+if ! git diff --cached --quiet; then
+	git commit -m "update"
+	git push
+else
+	echo "No changes to commit"
+fi
 
 echo "Running npm deploy..."
 npm install
