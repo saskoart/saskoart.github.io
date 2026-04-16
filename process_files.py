@@ -1,7 +1,7 @@
 import shutil
 import pandas as pd
 
-from PIL import Image
+from PIL import Image, ImageOps
 from PIL import ImageFont
 from PIL import ImageDraw
 import os
@@ -126,6 +126,7 @@ for folder in Path(INPUT_DIR).glob("*/raw_images"):
         if img is None:
             print(f"⚠️ Konnte Bild nicht laden: {filename}")
             continue
+        img = ImageOps.exif_transpose(img)
 
         img = resize_with_aspect_ratio(img, MAX_WIDTH, MAX_HEIGHT)
         img = add_watermark(img, WATERMARK_TEXT)
