@@ -20,7 +20,7 @@ MAX_WIDTH = 1280
 MAX_HEIGHT = 1280
 
 WATERMARK_TEXT = "© Sasko Art"
-FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+FONT = "/System/Library/Fonts/HelveticaNeue.ttc"
 COLOR = (255, 255, 255, 128)  # weiß
 
 PADDING = 20  # Abstand vom Rand

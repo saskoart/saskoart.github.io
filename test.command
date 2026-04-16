@@ -2,6 +2,8 @@
 
 set -e
 
+cd "$(dirname "$0")"
+
 git pull
 
 # Load conda
@@ -14,6 +16,7 @@ echo "Running Python processing script..."
 python process_files.py
 
 echo "Running npm start..."
+npm install
 npm start
 
 echo "Started development server."
