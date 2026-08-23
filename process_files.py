@@ -114,6 +114,15 @@ for folder in Path(INPUT_DIR).glob("*/raw_images"):
         print(f"no excel file in folder: {folder.parent.name}")
 
     for filename in folder.iterdir():
+        if filename.suffix.lower() in {".pdf"}:
+            input_path = filename
+            output_folder = OUTPUT_DIR / folder.parent.name / "images"
+            output_folder.mkdir(exist_ok=True, parents=True)
+            output_path = output_folder / filename.with_suffix(".pdf").name
+            shutil.copy(input_path, output_path)
+            print(f"✅ PDF kopiert: {filename}")
+            continue
+
         if filename.suffix.lower() not in {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp"}:
             continue
 

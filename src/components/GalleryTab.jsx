@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import { Figure, FigureCaption, FigureImage, Modal } from "react-bootstrap";
+import { Document, Page } from 'react-pdf';
 
 function GalleryTab({ title, description, description_english, data, folder }) {
     const [show, setShow] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-    const handleOpen = (image, title) => {
-        setSelectedImage({ image, title });
+    const isPDF = (filename) => filename && filename.toLowerCase().endsWith('.pdf');
+
+    const handleOpen = (item, itemTitle) => {
+        setSelectedItem({ item, itemTitle, isPdf: isPDF(item) });
         setShow(true);
     };
+
+    const [numPages, setNumPages] = useState();
+    const [pageNumber, setPageNumber] = useState(1);
+
+    function onDocumentLoadSuccess({ numPages }) {
+        setNumPages(numPages);
+    }
 
     return (
         <div className="contentStyle">
@@ -19,11 +29,17 @@ function GalleryTab({ title, description, description_english, data, folder }) {
                     className="figureComponent"
                     onClick={() => handleOpen(item.image, item.title)}
                 >
-                    <FigureImage
-                        src={`${folder}/images/${item.image}`}
-                        alt={item.title}
-                        className="figureComponentImage"
-                    />
+                    {isPDF(item.image) ? (
+                        <Document file="somefile.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                            <Page pageNumber={pageNumber} />
+                        </Document>
+                    ) : (
+                        <FigureImage
+                            src={`${folder}/images/${item.image}`}
+                            alt={item.title}
+                            className="figureComponentImage"
+                        />
+                    )}
                     <FigureCaption>
                         <h3 className="figureCaptionTitle">{item.title}</h3>
                         <p>{item.description}</p>
@@ -45,17 +61,29 @@ function GalleryTab({ title, description, description_english, data, folder }) {
                 ))
                 : null}
 
-            {/* Modal for enlarged image */}
-            <Modal show={show} onHide={() => setShow(false)}>
+            {/* Modal for enlarged image or PDF */}
+            <Modal show={show} onHide={() => setShow(false)} size={selectedItem?.isPdf ? "lg" : "md"}>
                 <Modal.Header closeButton>
-                    {selectedImage ? selectedImage.title : ""}
+                    {selectedItem ? selectedItem.itemTitle : ""}
                 </Modal.Header>
                 <Modal.Body style={{ textAlign: "center" }}>
-                    {selectedImage ? <img
-                            src={`${folder}/images/${selectedImage.image}`}
-                            alt={selectedImage.title}
-                            className="figureModalImage"
-                        /> : null}
+                    {selectedItem ? (
+                        selectedItem.isPdf ? (
+                            <iframe
+                                src={`${folder}/images/${selectedItem.item}`}
+                                width="100%"
+                                height="600px"
+                                style={{ border: 'none' }}
+                                title={selectedItem.itemTitle}
+                            />
+                        ) : (
+                            <img
+                                src={`${folder}/images/${selectedItem.item}`}
+                                alt={selectedItem.itemTitle}
+                                className="figureModalImage"
+                            />
+                        )
+                    ) : null}
                 </Modal.Body>
             </Modal>
         </div>
