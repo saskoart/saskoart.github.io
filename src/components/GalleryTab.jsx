@@ -32,29 +32,31 @@ function GalleryTab({ title, description, description_english, data, folder }) {
         <div className="contentStyle">
             <h2>{title}</h2>
             {data.map((item, index) => (
-                <Figure
-                    key={index}
-                    className="figureComponent"
-                    onClick={() => handleOpen(item.image, item.title)}
-                >
-                    {isPDF(item.image) ? (
-                        <div>
-                            <Document file={`${folder}/images/${item.image}`} onLoadSuccess={onDocumentLoadSuccess}>
-                                <Page pageNumber={pageNumber} />
-                            </Document>
-                        </div>
-                    ) : (
-                        <FigureImage
-                            src={`${folder}/images/${item.image}`}
-                            alt={item.title}
-                            className="figureComponentImage"
-                        />
-                    )}
-                    <FigureCaption>
-                        <h3 className="figureCaptionTitle">{item.title}</h3>
-                        <p>{item.description}</p>
-                    </FigureCaption>
-                </Figure>
+                item.title === "skip" ? null : (
+                    <Figure
+                        key={index}
+                        className="figureComponent"
+                        onClick={() => handleOpen(item.image, item.title)}
+                    >
+                        {isPDF(item.image) ? (
+                            <div>
+                                <Document file={`${folder}/images/${item.image}`} onLoadSuccess={onDocumentLoadSuccess}>
+                                    <Page pageNumber={pageNumber} />
+                                </Document>
+                            </div>
+                        ) : (
+                            <FigureImage
+                                src={`${folder}/images/${item.image}`}
+                                alt={item.title}
+                                className="figureComponentImage"
+                            />
+                        )}
+                        <FigureCaption>
+                            <h3 className="figureCaptionTitle">{item.title}</h3>
+                            <p>{item.description}</p>
+                        </FigureCaption>
+                    </Figure>
+                )
             ))}
             {description != null && description !== ""
                 ? description.split("\n").map((line, index) => (
