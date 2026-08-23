@@ -30,7 +30,7 @@ function GalleryTab({ title, description, description_english, data, folder }) {
                     onClick={() => handleOpen(item.image, item.title)}
                 >
                     {isPDF(item.image) ? (
-                        <Document file="somefile.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                        <Document file={`${folder}/images/${item.image}`} onLoadSuccess={onDocumentLoadSuccess}>
                             <Page pageNumber={pageNumber} />
                         </Document>
                     ) : (
